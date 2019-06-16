@@ -1,0 +1,226 @@
+<html>
+    <head>
+        <title>LOGIN OR REGISTER</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="styles.css"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="login_registration.css"> -->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">. -->
+      <style>  
+      /* body{
+            background-image: url("https://wallpapercave.com/wp/4wxQCdK.jpg");
+            height: 100%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        } */
+
+        .header{
+            margin-top:150px;
+            text-align: center; 
+            color:black;
+            border: 2px solid #000000;
+        }
+        .wrapper{
+            position: fixed;
+            text-align:center;
+            top: 420px;
+            left: 35%;
+            z-index: 99;
+        }
+        .container{
+            position: relative;
+        }
+        #btn2{
+            padding: 15px 75px;
+            margin-top: 15px;
+            background-color:rgba(212, 226, 21, 0);
+            color:darkgrey;
+            font-family: 'Merriweather', serif;
+            font-size: 20px;
+            border:2px solid darkgrey;
+            border-radius: 4px;
+            
+        }
+        #btn1{
+            padding: 15px 75px;
+            margin-top: 15px;
+            background-color:rgba(245,244,244,0);
+            color:darkgrey;
+            font-family: 'Merriweather', serif;
+            border:2px solid darkgrey;
+            font-size:20px;
+            border-radius: 4px;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+        #btn3{
+            padding: 15px 75px;
+            margin-top: 15px;
+            background-color: rgba(245,244,244,0);
+            color:black;
+            font-family: 'Merriweather', serif;
+            border-radius: 4px;
+            border:2px solid  #000000;
+            font-size:20px;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+        #btn1:hover,#btn2:hover,#btn3:hover{
+            background-color: rgb(255, 255, 255)
+        }
+
+ html, body {
+  background: #222;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+ }   
+
+.view {
+  position: absolute;
+  top: 420;
+  left: 0;
+  right: 35;
+  bottom: 0;
+  -webkit-perspective: 400;
+          perspective: 400;
+}
+
+.plane {
+  width: 420px;
+  height: 420px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.plane.main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  -webkit-transform: rotateX(60deg) rotateZ(-30deg);
+          transform: rotateX(60deg) rotateZ(-30deg);
+  -webkit-animation: rotate 20s infinite linear;
+          animation: rotate 20s infinite linear;
+}
+.plane.main .circle {
+  width: 420px;
+  height: 420px;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  border-radius: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 0 60px crimson, inset 0 0 60px crimson;
+}
+.plane.main .circle::before, .plane.main .circle::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 10%;
+  height: 10%;
+  border-radius: 420px;
+  background: rgba(114, 31, 31, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 0 80px 2px black;
+}
+.plane.main .circle::before {
+  -webkit-transform: translateZ(-90px);
+          transform: translateZ(-90px);
+}
+.plane.main .circle::after {
+  -webkit-transform: translateZ(90px);
+          transform: translateZ(90px);
+}
+.plane.main .circle:nth-child(1) {
+  -webkit-transform: rotateZ(72deg) rotateX(63.435deg);
+          transform: rotateZ(72deg) rotateX(63.435deg);
+}
+.plane.main .circle:nth-child(2) {
+  -webkit-transform: rotateZ(144deg) rotateX(63.435deg);
+          transform: rotateZ(144deg) rotateX(63.435deg);
+}
+.plane.main .circle:nth-child(3) {
+  -webkit-transform: rotateZ(216deg) rotateX(63.435deg);
+          transform: rotateZ(216deg) rotateX(63.435deg);
+}
+.plane.main .circle:nth-child(4) {
+  -webkit-transform: rotateZ(288deg) rotateX(63.435deg);
+          transform: rotateZ(288deg) rotateX(63.435deg);
+}
+.plane.main .circle:nth-child(5) {
+  -webkit-transform: rotateZ(360deg) rotateX(63.435deg);
+          transform: rotateZ(360deg) rotateX(63.435deg);
+}
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+            transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotateX(0) rotateY(0) rotateZ(0);
+            transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+            transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="wrapper">
+                    <a href="/loginUser"><button type="button" class="btn btn-primary" id="btn1" onclick=console.log(hello)><strong>LOGIN AS USER</strong> </button></a>
+                    <br/>
+                    <a href="/loginEvent"><button type="button" class="btn btn-primary" id="btn1"><strong>LOGIN AS EVENT ORGANISER</strong> </button></a>
+                    <br/>
+                    <a href="/regUser"><button class="btn btn-success" id="btn2"><strong>REGISTER AS MEMBER</strong> </button></a>
+                    <br/>
+                    <a href="/regEvent"><button type="button" class="btn btn-info" id="btn2"><strong>REGISTER AS EVENT ORGANISER</strong></button></a>
+                    <br/>
+                    
+                </div>
+            <div class="view">
+                    <div class="plane main">
+                      <div class="circle"></div>
+                      <div class="circle"></div>
+                      <div class="circle"></div>
+                      <div class="circle"></div>
+                      <div class="circle"></div>
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+              
+
+            
+                    
+                   
+                
+                </div>
+            </div>
+       
+    </body>
+
+</html>

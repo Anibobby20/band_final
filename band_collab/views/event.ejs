@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>EVENT ORGANISER</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+  <style>
+  .btn-outline-danger{
+  color:white;
+  border-color:white;
+  border-radius:0px;
+  font-weight:100;
+  text-align: center;
+  margin-top:20px;
+}  
+  
+  .uname{
+    margin-bottom:25px;
+    margin-top: -25px;
+  }
+  .top-wrapper{
+    font-weight: 1000;
+    font-size: 30px;
+  }
+  .jumbotron{
+    margin-left:-16px;
+    height:383px;
+    width:537px;
+  }
+
+  html {
+  background-color: #fefefe;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.container {
+  margin: 50px auto 0;
+  width: 700px;
+}
+
+.u-float-right {
+  float: right;
+}
+
+.u-flex-center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.subtle {
+  color: rgb(17, 16, 16);
+  font-size: 18px;
+}
+
+.card-media {
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  height: 200px;
+  margin-bottom: 25px;
+  transition: all 300ms ease-out;
+  width: 100%;
+}
+
+.card-media:hover {
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .2);
+}
+
+.card-media-object-container {
+  background: none;
+  float: left;
+  height: 100%;
+  width: 35%;
+  position: relative;
+}
+
+.card-media-object {
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+}
+
+.card-media-object:after {
+  content: " ";
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 300ms ease-out;
+  z-index: 10;
+}
+
+.card-media:hover .card-media-object:after {
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.4) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,rgba(0,0,0,0.4) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+  opacity: 1;
+}
+
+.card-media-object-tag {
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 2px 7px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.card-media-object-social-list {
+  bottom: 4px;
+  left: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 20;
+}
+
+.card-media-object-social-list li {
+  border-radius: 50%;
+  display: inline-block;
+  height: 30px;
+  margin-right: 6px;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(5px);
+  transition: all 300ms ease-out;
+  width: 30px;
+}
+
+.card-media:hover .card-media-object-social-list li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-object-social-list li:nth-child(1) {
+  transition-delay: 0;
+}
+.card-media-object-social-list li:nth-child(2) {
+  transition-delay: 75ms;
+}
+.card-media-object-social-list li:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+.card-media-object-social-list-item-additional {
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  padding-top: 7px;
+  text-align: center;
+}
+
+.card-media-body {
+  background: url(https://www.xmple.com/wallpaper/red-gradient-yellow-linear-1920x1080-c2-e9967a-ffdab9-a-165-f-14.svg);
+  float: left;
+  height: 100%;
+  background-size: cover;
+  font-size:25px;
+  padding: 12px 15px;
+  position: relative;
+  width: 65%;
+}
+
+.card-media-body-top {
+  display: block;
+}
+
+.card-media-body-top-icons {
+  margin-top: -2px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  transform: translateY(-5px);
+}
+
+.card-media:hover .card-media-body-top-icons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-body-top-icons > svg {
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 300ms ease-out;
+}
+
+.card-media-body-top-icons > svg:hover {
+  fill: #444;
+}
+
+.card-media-body-heading {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-media-body-supporting-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  opacity: 1;
+  padding: 0 15px;
+  transition: all 300ms ease-out;
+  width: 100%;
+}
+
+.card-media:hover .card-media-body-supporting-bottom {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.card-media-body-supporting-bottom-text {
+  display: inline-block;
+}
+
+.card-media-body-supporting-bottom-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 300ms ease-out;
+}
+
+.card-media:hover .card-media-body-supporting-bottom-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-link {
+  color: rgb(1, 12, 17);
+  text-decoration: none;
+}
+
+.btn{
+  font-weight: 1000;
+  float:right;
+  padding-right: 10px;
+  margin-top: 25px;
+  padding-left: 24px;
+ 
+
+}
+.btn:hover{
+  background-color: rgba(0, 0, 0, 0.609)
+}
+body{
+  
+  padding-top :65px;
+background: url(https://wallpaperplay.com/walls/full/d/c/8/129017.jpg);
+background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+ 
+background-size: cover;
+
+}
+.display-3{
+      margin-top:-61px;
+    }
+    .jumbotron{
+    margin-top: -20px;
+    padding-top: 59px;
+    width: 100%;
+    margin-bottom: -89px;
+    height: 250px;
+      background: 
+    linear-gradient(
+  rgba(5, 5, 7, 0.383), 
+  rgba(1, 15, 15, 0.45)
+  ),
+  url(https://images.unsplash.com/photo-1496596634762-c92dca7d13a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  color:white;
+  
+}
+
+.jumbotron h1{
+  font-size:50px;
+  line-height: 60px;
+
+}
+.page-scroll{
+  height:100px;
+}
+.container-fliud{
+  margin-bottom: -102px;
+}
+
+#mynavbar{
+  position: fixed;
+  top: 0;
+  z-index: inherit auto;
+	width: 100%;
+  height: 70px;
+  
+}
+.navbar-default{
+  background-color: black;
+}
+#myimage{
+  height:69px;
+  margin-left: -30px;
+}
+
+.nav-link{
+  color:rgba(255,255,255,.5);
+}
+
+
+  
+  </style>
+  <script>
+
+  function displayProfile(name){
+    axios.get('http://localhost:3020/eventprof')
+    .then(function (response) {
+      // handle success
+      // clearData();
+      display(response,name);
+     
+      displayProfileeve(name)
+      
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+    }
+
+    function displayProfileeve(name){
+    axios.get('http://localhost:3020/newEvent')
+    .then(function (response) {
+      // handle success
+      // clearData();
+      displaymyevents(response,name);
+     
+     
+      
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+    }
+//display events added by organizers
+    function displaymyevents(response,name){
+     length=response.data.length;
+      for(var i=length-1;i>=0;i--){
+        if(response.data[i].userName===name){
+          console.log("this is user"+response.data[i].userName)
+          document.getElementById("events").innerHTML+=
+       
+       `
+       <div class="container">
+  
+  <div class="card-media">
+    <!-- media container -->
+    <div class="card-media-object-container">
+      <div class="card-media-object" style="background-image: url(https://cdn.wallpapersafari.com/26/8/DgN89j.jpg);"></div>
+      <span class="card-media-object-tag subtle">${response.data[i].Status}</span>
+      <ul class="card-media-object-social-list">
+      </ul>
+    </div>
+    <!-- body container -->
+    <div class="card-media-body">
+      <div class="card-media-body-top">
+        <span class="subtle">Type:${response.data[i].eventType}</span>
+        <div class="card-media-body-top-icons u-float-right">
+          
+
+        </div>
+      </div>
+      <span class="card-media-body-heading">Event : ${response.data[i].eventName}</span>
+      <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle">Location : ${response.data[i].eventLocation}</span>
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right">Amount:${response.data[i].Salary}</span>
+      </div>
+      <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+     
+        <a href="#" class="card-media-body-supporting-bottom-text card-media-link u-float-right">Contact:${response.data[i].Contact}</a>
+      </div>
+    </div>
+  </div>
+  
+`
+   
+    
+        }}}
+    
+//display event organizer info
+  function display(response,name){
+     length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("this is user"+response.data[i].userName)
+          document.getElementById("data").innerHTML+=
+       
+       `
+       <div class=jumbotron jumbotron-fluid style="margin-top:0px">
+		<div class="containerjumbo" style="margin-top:24px">
+   <h1 class="display-3">HELLO, ${response.data[i].userName.toUpperCase()}!</h1>
+   <p><strong>EMAIL</strong> - ${response.data[i].email.toUpperCase()}.</p>
+   <p><strong>Contact</strong> - ${response.data[i].phoneNumber}
+   <p><strong>CITY</strong> - ${response.data[i].city.toUpperCase()}</p>
+   <p>
+  
+ 
+ </div>
+ </div>
+ <div class="page-scroll">
+       
+
+
+
+`
+        }
+      }
+
+    }
+
+    function clearData(){
+      //document.getElementById('userlinks').innerHTML=""
+      document.getElementById("data").innerHTML=""
+    }
+    function clearProfiledata(){
+      document.getElementById('userlinks').innerHTML=""
+    }
+//     function addProfiledata(){
+//       document.getElementById('userlinks').innerHTML=`
+//       <div id='userbio' class="shadow-lg p-3 mb-5 bg-white rounded">
+//   <h2 style="margin-bottom: 5px">DESCRIPTION</h2>
+//   <br>
+// </div>
+// <input id="bio" type="text"></input><button onclick=${function(){addbio()}}>ADD to BIO</button>
+
+
+// <input id="audio" type="text"></input><button onclick=${function(){sendAudio()}}>send audio</button>
+// <p id='soundcloud'></p>
+
+
+// <div>Enter a YouTube URL:
+//   <input id="video" type="text"  />
+// </div>
+// <div>
+//   <button id="myBtn" onclick=${function(){sendVideo()}}>Go</button>
+// </div>
+// <p id="frame"></p>`
+//     }
+
+//display musician info
+    function displayData(response,ins)
+    {   length=response.data.length;
+        if(ins==='guitar')
+        {link='https://cdn.shopify.com/s/files/1/1010/2722/products/andrew_healey_2.jpg?v=1455751289'}
+        if(ins==='drums')
+        {link='https://cdn.shopify.com/s/files/1/1179/7372/files/Thomo.jpg?v=1511848381'}
+        if(ins==='bass')
+        {link='https://mitchellguitars.com/wp-content/uploads/2018/11/Mitchell-FB-Series-Bass-Main-Mobile.jpg'}
+        if(ins==='vocals')
+        {link='https://i.udemycdn.com/course/750x422/113564_a628_8.jpg'}
+        if(ins==='keyboard')
+        {link='https://digitalpianojudge.com/wp-content/uploads/2019/02/cheap-keyboard-piano.jpg'}
+      for(var i=0;i<length;i++){
+     
+     
+  document.getElementById("data").innerHTML+=
+       
+       `
+       <div class="card-deck" style="width:25% ;float:left;margin-right:0px;margin-bottom:30px ">
+      <div class="card" >
+    <img class="card-img-top" src=${link}  style="width:100%">
+      <h4 class="card-title" style="font-size:37px">Name:${response.data[i].userName}</h4>
+      <p class="card-text" style="font-size:25px">Instrument:${response.data[i].instrument}</p>
+      <p class="card-text" style="font-size:25px">Genre:${response.data[i].genre}</p>
+      <p class="card-text" style="font-size:25px">Level:${response.data[i].level}</p>
+    
+      
+      
+      <a href='/others/${response.data[i].userName}' target="_blank" class="btn btn-primary stretched-link" id =${i} >See Profile</a>
+    </div>
+  </div>
+</div>
+</div>
+  
+      `
+      // let btn=document.getElementsByClassName('btn btn-primary stretched-link')[i];
+      //   btn.addEventListener('click',()=>{displayProfile(response.data[i].userName)})
+      // var data=document.createElement(a);
+      // node.appendChild(data);
+      // document.getElementById("data0").appendChild(node)
+     // console.log(userName);
+    
+    }}
+    function trial(name){
+      console.log(name)
+    }
+
+
+    function displayEventData(response)
+    {length=response.data.length;
+      for(var i=length-1;i>=0;i--){
+      
+      // document.getElementById("username").innerHTML = response.data[i].username;
+      // document.getElementById("instrument").innerHTML = response.data[i].instrument;
+      // document.getElementById("email").innerHTML = response.data[i].email;
+      // document.getElementById("city").innerHTML = response.data[i].city;
+      // document.getElementById("genre").innerHTML = response.data[i].genre;
+      // document.getElementById("level").innerHTML = response.data[i].level;
+     
+       document.getElementById("data").innerHTML+=`
+       <div class="container">
+  
+  <div class="card-media">
+    <!-- media container -->
+    <div class="card-media-object-container">
+      <div class="card-media-object" style="background-image: url(https://cdn.wallpapersafari.com/26/8/DgN89j.jpg);"></div>
+      <span class="card-media-object-tag subtle">${response.data[i].Status}</span>
+      <ul class="card-media-object-social-list">
+      </ul>
+    </div>
+    <!-- body container -->
+    <div class="card-media-body">
+      <div class="card-media-body-top">
+        <span class="subtle">Type:${response.data[i].eventType}</span>
+        <div class="card-media-body-top-icons u-float-right">
+          
+
+        </div>
+      </div>
+      <span class="card-media-body-heading">Event : ${response.data[i].eventName}</span>
+      <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle">Location : ${response.data[i].eventLocation}</span>
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right">Amount:${response.data[i].Salary}</span>
+      </div>
+      <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+     
+        <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">Contact:${response.data[i].Contact}</a>
+      </div>
+    </div>
+  </div>
+    
+       `
+      //  <div class="container-fluid" style="border:5px solid black ">
+      //  <div class="row">
+      //     <div class="col-sm-6" id="username"+ style="background-color:yellow;">${response.data[i].eventName}</div>
+      //     <div class="col-sm-6" id="instrument"style="background-color:orange;">Place:${response.data[i].eventPlace}</div>
+      //   </div>
+      //   <br>
+        
+      //   <div class="row">
+      //     <div class="col-sm" id="email" style="background-color:yellow;">Location:${response.data[i].eventLocation}</div>
+   
+      //     <div class="col-sm" id="email" style="background-color:yellow;">contact:${response.data[i].Contact}</div>
+   
+      //   </div>
+      //   <br>
+      //   <div class="row">
+      //     <div class="col-sm" id="city" style="background-color:yellow;">Type:${response.data[i].eventType}</div>
+      //     <div class="col-sm" id="genre" style="background-color:orange;">worth:${response.data[i].Salary}</div>
+      //     <div class="col-sm" id="level" style="background-color:orange;">Status:${response.data[i].Status}</div>
+         
+      //   </div>
+      //   <br>
+     
+      //   </div>
+      
+}}
+  //get guitarists
+  function getguitar()
+    {
+      var ins='guitar'
+      axios.get('http://localhost:3020/guitar')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+     //
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+  
+    
+    function getdrum()
+    {
+  axios.get('http://localhost:3020/drum')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='drums'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getbass()
+    {
+  axios.get('http://localhost:3020/bass')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='bass'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getvocals()
+    {
+  axios.get('http://localhost:3020/vocals')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='vocals'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getkeyboard()
+    {
+  axios.get('http://localhost:3020/keyboard')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='keyboard'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    
+
+
+    //get event
+    function getevent()
+    {
+      axios.get('http://localhost:3020/event')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayEventData(response);
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  }
+
+  
+  function displayMain(loguser)
+  {
+    link='http://localhost:3020/main/event/'+loguser
+    console.log(link)
+    location.href=link
+    // axios.get('http://localhost:3020/main/'+loguser)
+    // .then(function (response) {
+    //   // handle success
+    //   //  clearData();
+    //   // clearProfiledata()
+    //   // displayEventData(response);
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   // handle error
+    //   console.log(error);
+    // })
+    // .finally(function () {
+    //   // always executed
+    // });
+
+  }
+
+//   window.onscroll = function() {myFunction()};
+
+// var header = document.getElementById("mynavbar");
+// var sticky = header.offsetTop;
+
+// function myFunction() {
+//   if (window.pageYOffset > sticky) {
+//     header.classList.add("sticky");
+//   } else {
+//     header.classList.remove("sticky");
+//   }
+// }
+function getchat(loguser)
+  {
+    link='http://localhost:3020/chat/'+loguser
+    console.log(link)
+    window.open(link)
+    // location.href=link
+  }
+function newEvent(loguser){
+  link='http://localhost:3020/event/newEvent/'+loguser
+  window.open(link)
+}
+
+  </script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light" id="mynavbar">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#" onclick=displayMain(loguser)><img src="/indika.jpeg" id="myimage">
+  </a>
+
+  <!-- Links -->
+  <ul class="navbar-nav" style="font-size:26px">
+    
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" style="color: black">
+        INSTRUMENTS
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#" onclick=getguitar()>GUITARISTS</a>
+        <a class="dropdown-item" href="#" onclick=getdrum()>DRUMMER</a>
+        <a class="dropdown-item" href="#" onclick=getbass()>BASS</a>
+        <a class="dropdown-item" href="#" onclick=getvocals()>VOCALS</a>
+        <a class="dropdown-item" href="#" onclick=getkeyboard()>KEYBOARDS</a>
+      </div>
+    </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" href="#" onclick=getevent() style="color: black">EVENTS</a>
+   
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" onclick="getchat(loguser)" href="#"  style="color: black">CHAT</a>
+  </li>
+  <li class="nav-item" >
+      <a class="nav-link" href="http://localhost:3020/" style="color: black;"><span style="margin-left: 974px ">LOGOUT</span></a>
+  </li>
+</ul>
+</nav>
+<br>
+<h1 class="uname" id="user" hidden><%=logusername%></h1>
+<div class="container-fluid" id="data" style="margin-bottom: 1%">  
+</div> 
+<div id='userlinks'>
+
+    <h class="top-wrapper" style="color: darksalmon;margin-left:45%;margin-top:5px;font-size: 30px;line-height: 40px;"><strong>MY EVENTS</strong>
+      <a class="btn btn-outline-danger"  style="color: white;text-align: center;padding-right: 23px;margin-right: 2%;font-size:77%" onclick=newEvent(loguser) >ADD AN EVENT</a></h>
+      
+      <p id="events"></p>
+
+
+    
+
+
+
+<script>
+
+var loguser=document.getElementById('user').innerText;
+window.onload=function(){
+displayProfile(loguser)
+// displayAudio(loguser)
+// displayVideo(loguser)
+// displayBio(loguser)
+}
+
+        
+
+
+   </script>
+
+</body>
+</html>

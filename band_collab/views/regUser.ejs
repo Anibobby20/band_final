@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+<title>User Registration</title>
+<link href="https://htmlcolors.com/google-color-picker">
+        <style>
+            body {
+  font: 100% / 1.414 "Open Sans", "Roboto", arial, sans-serif;
+  background: #e9e9e9;
+}
+
+a,
+[type="submit"] {
+  transition: all .25s ease-in;
+}
+
+.signup__container {
+  position: absolute;
+  top: 500px;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  height: 105%;
+  border-radius: 0.1875rem;
+  box-shadow: 0px 0.1875rem 0.4375rem rgba(0, 0, 0, 0.25);
+}
+
+.signup__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.411);
+}
+
+.container__child {
+  width: 50%;
+  height: 100%;
+  color: #fff;
+}
+
+.signup__thumbnail {
+  position: relative;
+  padding: 2rem;
+  width:150%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: url(https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.thumbnail__logo,
+.thumbnail__content,
+.thumbnail__links {
+  position: relative;
+  z-index: 2;
+}
+
+.thumbnail__logo {
+  align-self: flex-start;
+}
+
+.logo__shape {
+  fill: #fff;
+}
+
+.logo__text {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  vertical-align: bottom;
+}
+
+.thumbnail__content {
+  align-self: center;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+  color: white;
+}
+
+.heading--primary {
+  font-size: 1.999rem;
+}
+
+.heading--secondary {
+  font-size: 1.414rem;
+}
+
+.thumbnail__links {
+  align-self: flex-end;
+  width: 100%;
+}
+
+.thumbnail__links a {
+  font-size: 1rem;
+  color: #fff;
+}
+.thumbnail__links a:focus, .thumbnail__links a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.signup__form {
+  padding: 2.5rem;
+  background:url(https://designshack.net/wp-content/uploads/black-texture-background.jpg);
+  
+
+  background-size:cover; 
+}
+
+label {
+  font-size: 34px;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.form-control {
+    height:30px;
+    font-size: 30px;
+  background-color: transparent;
+  color: white;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+.form-control:focus {
+  border-color: #111;
+}
+
+[type="text"] {
+  color: #111;
+}
+
+[type="password"] {
+  color: #111;
+}
+
+.btn--form {
+  padding: .5rem 2.5rem;
+  font-size: .95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  background: #111;
+  border-radius: 2.1875rem;
+}
+.btn--form:focus, .btn--form:hover {
+  background: #323232;
+}
+
+.signup__link {
+  font-size: .8rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: #999;
+}
+.signup__link:focus, .signup__link:hover {
+  color: #787878;
+}
+
+.dropdown {
+   background: transparent;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   color: #fff;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+
+    } 
+.dropdown:hover{
+    background-color: #111;
+    color: white;
+}
+   
+
+        </style>
+        <script>
+
+        function myfunction(){
+            document.getElementById('my-form').submit();
+
+            document.getElementById('my-form').reset();
+        }
+        </script>
+
+    </head>
+   <body>
+        <div class="signup__container">
+                <div class="container__child signup__thumbnail">
+                  <div class="thumbnail__logo">
+                    
+                  
+                  </div>
+                  <div class="thumbnail__content text-center">
+                   
+                  </div>
+                  
+                  <div class="signup__overlay"></div>
+                </div>
+                <div class="container__child signup__form">
+                    <br>
+                    <br>
+                  <form action="http://localhost:3020/users" method="POST">
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <br>
+                      <input class="form-control" type="text" name="userName" placeholder="Enter Your Username" style="color: white"required="true" />
+                      
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <br>
+                      <input class="form-control" type="email" name="email" placeholder=" Enter Your Email" style="color: white"required="true" />
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <br>
+                      <input class="form-control" type="password" name="password" required="true" placeholder="Enter Your Password" style="color: white"/>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="phoneNumber">PhoneNumber</label>
+                      <br>
+                      <input class="form-control" type="number" name="phoneNumber" required="true" placeholder="Enter Phone Number"style="color: white" />
+                    </div>
+                    <br>
+                    <div class="form-group">
+                            <label for="City">City</label>
+                            <br>
+                            <input class="form-control" type="text" name="city" required="true" placeholder="Enter Your City" style="color: white" />
+                          </div>
+                          <br>
+                          <div class="form-group">
+                                <label for="genre">Genre</label>
+                                <br>
+                                <input class="form-control" type="text" name="genre" required="true" placeholder="Genre" style="color: white"/>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                                <label for="instrument">Instrument</label>
+                                <br>
+                                <select style="position: absolute;left: 75%;width: 314px;height:38px;"name="instrument" class="dropdown">
+                                        <option value="" disabled selected>Select your option</option>
+                                        <option value="guitar">Guitar</option>
+                                        <option value="bass">Bass</option>
+                                        <option value="keyboard">Keyboard</option>
+                                        <option value="drum">Drums</option>
+                                        <option value="vocals">Vocals</option>
+                                        
+                                    </select>  
+                                </br>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                                <label for="level">Level of Skill</label>
+                                <br>
+                                <select style="position: absolute;left: 75%;width: 314px;height: 38px; margin-block: 43px;;" name="level" class="dropdown">
+                                        <option value="" disabled selected>Select your option</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advance">Advanced</option>
+                                      </select> 
+                                    </br>
+                        </div>
+        
+        
+        
+        <br>
+                    <div class="m-t-lg">
+                      <ul class="list-inline">
+                        <li>
+                          <input class="btn btn--form" type="submit" value="SUBMIT" style="height:50px;font-size: 25px" onclick="myfunction()" />
+                        </li>
+                      </div>
+                      <% if (locals.messages) { %>
+                        <div style="font-size: 166%"><%=messages%></div>
+                    <% } %>
+                       
+                      </ul>
+                    </div>
+                  </form>  
+                </div>
+              </div>
+           
+            
+            </div>
+        </div>    
+   </div> 
+ </body>
+
+
+</html>
+

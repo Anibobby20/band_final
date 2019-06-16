@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://hackerthemes.com/bootstrap-cheatsheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/bootstrap/bootstrap_wells.asp">
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet"> 
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ <script> function displayProfile(name){
+    axios.get('http://localhost:3020/profile')
+    .then(function (response) {
+      // handle success
+     
+      display(response,name);
+      // addProfiledata();
+      displayAudio(name)
+      displayVideo(name)
+      displayBio(name)
+
+      
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+    }
+function display(response,name){
+     length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("this is user"+response.data[i].userName)
+          document.getElementById("data").innerHTML+=
+       
+       `
+
+       <div id="jumbotron1"style="height:"319px" margin-left:-167px;margin-right:-175px;"class="jumbotron">
+       
+        <h3 style="color:white;font-size:38px;text-align:center;margin-top:-40px"class="display-3"><strong>YOU ARE VIEWING  ${response.data[i].userName.toUpperCase()+"'s"+" PROFILE"}</strong></h3>
+  <p class="lead"><strong>INSTRUMENT</strong> : ${response.data[i].instrument.toUpperCase()}</p>
+  <p class="lead"><strong>GENRE</strong> : ${response.data[i].genre.toUpperCase()}</p>
+  <p><strong>EMAIL</strong> : ${response.data[i].email.toUpperCase()}.</p>
+  <p><strong>MOBILE NO</strong> : ${response.data[i].phoneNumber}</p>
+  <p><strong>CITY</strong> : ${response.data[i].city.toUpperCase()}</p>
+ 
+
+</div>
+`
+        }
+      }
+
+    }
+
+
+
+    function displayAudio(name){
+      axios.get('http://localhost:3020/profile/audio')
+    .then(function (response) {
+      // handle success
+      displayWidget(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+    }
+    function displayWidget(response,name){
+      length=response.data.length;
+      console.log("length is"+length);
+
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("sound cloud links---"+response.data[i].userName)
+          url=response.data[i].audioLink;
+          axios.get('http://soundcloud.com/oembed?format=json&url='+url+'&iframe=true')
+    .then(function (response) {
+      // handle success
+    var widget=response.data.html
+    widget=widget.replace("width=\"100%\"","width=\"100%\"");
+    widget=widget.replace("height=\"400\"","height=\"70%\"");
+    if(widget){
+    document.getElementById('soundcloud').innerHTML+=widget
+    }
+     console.log(widget)
+     
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+
+  }}
+
+    }
+
+    function displayVideo(name){
+      axios.get('http://localhost:3020/profile/video')
+    .then(function (response) {
+      // handle success
+      displayYoutube(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+    }
+
+    function displayYoutube(response,name){
+      length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+         console.log("inside display YT"+input_string)
+            var input_string = response.data[i].videoLink;
+            console.log(input_string)
+            var right_text = input_string.substring(input_string.indexOf("=")+1);
+            console.log("YT ID"+right_text)
+            document.getElementById('frame').innerHTML+=` <iframe width="560" height="315" src="https://www.youtube.com/embed/${right_text}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`}}}
+function displayBio(name){
+      axios.get('http://localhost:3020/profile/bio')
+    .then(function (response) {
+      // handle success
+      displayUserbio(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+}
+function displayUserbio(response,name){
+  length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("this is userbio"+response.data[i].bio)
+
+document.getElementById('userbio').innerHTML+=`<p style="margin-left:4.5%"><strong>${response.data[i].bio.toUpperCase()}</strong></p>`
+
+
+}}}
+
+function getguitar()
+    {
+      axios.get('http://localhost:3020/guitar')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayData(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+  
+    
+    function getdrum()
+    {
+  axios.get('http://localhost:3020/drum')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayData(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getbass()
+    {
+  axios.get('http://localhost:3020/bass')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayData(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getvocals()
+    {
+  axios.get('http://localhost:3020/vocals')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayData(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getkeyboard()
+    {
+  axios.get('http://localhost:3020/keyboard')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayData(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getevent()
+    {
+      axios.get('http://localhost:3020/event')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayEventData(response);
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  }
+  function displayData(response)
+    {   length=response.data.length;
+      for(var i=0;i<length;i++){
+     
+     
+  document.getElementById("data").innerHTML+=
+       
+       `
+       <div class="card-deck" style="width:25% ;float:left;margin-right:0px;margin-bottom:30px ">
+      <div class="card" >
+    <img class="card-img-top" src="https://www.kickassfacts.com/wp-content/uploads/2014/06/Bands.jpg"  style="width:100%">
+      <h4 class="card-title">${response.data[i].userName}</h4>
+      <p class="card-text">Instrument:${response.data[i].instrument}</p>
+      <p class="card-text">Genre:${response.data[i].genre}</p>
+      <p class="card-text">Level:${response.data[i].level}</p>
+    
+      
+      
+      <a href='/others/${response.data[i].userName}' target='_blank' class="btn btn-primary stretched-link" id =${i} >See Profile</a>
+    </div>
+  </div>
+</div>
+</div>
+  
+      `
+      // let btn=document.getElementsByClassName('btn btn-primary stretched-link')[i];
+      //   btn.addEventListener('click',()=>{displayProfile(response.data[i].userName)})
+      // var data=document.createElement(a);
+      // node.appendChild(data);
+      // document.getElementById("data0").appendChild(node)
+     // console.log(userName);
+    
+    }}
+
+
+    function clearData(){
+     //document.getElementById('userlinks').innerHTML=""
+      document.getElementById("data").innerHTML=""
+    }
+    function clearProfiledata(){
+      document.getElementById('userlinks').innerHTML=""
+    }
+    function displayMain(loguser)
+  {
+    link='http://localhost:3020/main/'+loguser
+    console.log(link)
+    location.href=link}
+
+
+</script>
+
+<style>
+  #data{
+    width: 100%;
+    padding-right: 173px;
+    padding-left: 163px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 94px;
+    
+
+}
+  #userlinks{
+    width: 100%;
+padding-right: 169px;
+padding-left: 163px;
+margin-right: auto;
+margin-left: auto;
+padding-top: 23px;
+  }
+    #jumbotron1{
+      height:296px;
+      padding-bottom:-64px;
+      margin-bottom: -172px;
+      margin-left:-166px;
+      margin-right: -173px;
+      margin-top:-5%;
+      padding-left:46px;
+      background: 
+    linear-gradient(
+  rgba(224, 141, 85, 0.1), 
+  rgba(231, 228, 226, 0.4)
+  ),
+  url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  color:white;
+  
+}
+#jumbotron2{
+  margin-left:-16%;
+  margin-right: -17%;
+  margin-top:10%;
+  background: 
+    linear-gradient(
+  rgba(224, 141, 85, 0.1), 
+  rgba(231, 228, 226, 0.4)
+  ),
+  url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  color:white;
+}
+body{
+  background:url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+      background-repeat: no-repeat;
+      
+    background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  
+}
+.btn{
+  color:white;
+  border-color:white;
+  border-radius:0px;
+  font-weight:100;
+  margin-top:20px;
+}  
+.btn:hover{
+  background-color: rgba(255, 255, 255, 1)
+}
+  
+  
+</style>
+
+</head>
+<body>
+       
+
+
+<h1 id="user" hidden ><%=username%></h1>
+<div class="container-fluid" id="data" >  
+   
+
+</div>
+
+  <div style="padding-left:0%"class="container-fluid" id='userlinks'>
+      <div id ="jumbotron2"class="jumbotron jumbotron-fluid" style="padding-top:8px;margin-left:-15px">
+          <div class="containerjumbo" >
+              <h2 style="margin-bottom: -17px;margin-left:2%;" ><strong style="margin-left:27px;font-size: 3rem;
+                font-weight: 400;
+                line-height: 1.2;">
+                USER DESCRIPTION:
+                
+              </strong></h2>
+              <br>
+              <p id="userbio"></p>
+  
+            </div>
+            </div>
+   
+   <div id='media'>
+    <p id="audiouser"style=" font-size: 36px;font-family: 'Anton', sans-serif;color:white;text-align:center">UPLOADED AUDIOS</p>
+    <div>
+     <p style="margin-left:7%"class="well well-lg"id='soundcloud' style="margin-bottom:20px;padding-left: 25px;float: left;"></p>
+    </div>
+    
+    <p style=" font-size: 36px;font-family: 'Anton', sans-serif;color:white;text-align:center">UPLOADED VIDEOS</p>
+    
+    <p id="frame" style="margin-left:16%"></p>
+
+
+  
+</div>
+   </div>
+
+       <button style="margin-left:39%;margin-bottom:2%;font-size: 40px"class="btn" onclick=window.close()>GO BACK</button>
+<script>
+        var loguser=document.getElementById('user').innerText;
+window.onload=function(){
+displayProfile(loguser)
+// displayAudio(loguser)
+// displayVideo(loguser)
+// displayBio(loguser)
+}</script>
+   
+</body>
+</html>

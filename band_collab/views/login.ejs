@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>USER PAGE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <style>
+    body{
+      padding-top: 65px;
+      background:url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+      background-repeat: no-repeat;
+      
+    background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  
+    }
+    .display-3{
+      margin-top:-61px;
+      text-decoration: underline;
+      margin-bottom: 19px;
+    }
+    #jumbotron1{
+      height:296px;
+      padding-bottom:-64px;
+      margin-bottom: -172px;
+      margin-left:-18px;
+      margin-right: -16px;
+      margin-top:-17px;
+      padding-left:46px;
+      background: 
+    linear-gradient(
+  rgba(224, 141, 85, 0.1), 
+  rgba(231, 228, 226, 0.4)
+  ),
+  url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  color:white;
+  
+}
+.page-scroll{
+  height:100px;
+}
+#mynavbar{
+  position: fixed;
+  top: 0;
+  z-index: 99;
+	width: 100%;
+  height: 70px;
+  
+}
+
+#myimage{
+  height:69px;
+  margin-left: -14px;
+}
+#userlinks{
+  margin-top: 95px;
+  margin-left: 15px
+}
+.bio{
+  text-align: left;
+    padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    width: 400px;
+    height: 150px;
+}
+.btn{
+  color:white;
+  border-color:white;
+  border-radius:0px;
+  font-weight:100;
+  margin-top:20px;
+}  
+.btn:hover{
+  background-color: rgba(0, 0, 0, 0.609)
+}
+#jumbotron2{
+
+      background: 
+    linear-gradient(
+      rgba(224, 141, 85, 0.1), 
+  rgba(231, 228, 226, 0.4)
+  ),
+  url(https://images.unsplash.com/photo-1517409091671-180985f2ca15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  background-position: center;
+  color:white;
+  padding-bottom: 1px;
+  margin-top:-18px;
+}
+html {
+  background-color: #fefefe;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.container {
+  margin: 50px auto 0;
+  width: 700px;
+}
+
+.u-float-right {
+  float: right;
+}
+
+.u-flex-center {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.subtle {
+  color: rgb(17, 16, 16);
+  font-size: 18px;
+}
+
+.card-media {
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+  height: 200px;
+  margin-bottom: 25px;
+  transition: all 300ms ease-out;
+  width: 100%;
+}
+
+.card-media:hover {
+  box-shadow: 0 5px 14px rgba(0, 0, 0, .2);
+}
+
+.card-media-object-container {
+  background: none;
+  float: left;
+  height: 100%;
+  width: 35%;
+  position: relative;
+}
+
+.card-media-object {
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+}
+
+.card-media-object:after {
+  content: " ";
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 300ms ease-out;
+  z-index: 10;
+}
+
+.card-media:hover .card-media-object:after {
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 52%, rgba(0,0,0,0.4) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,rgba(0,0,0,0.4) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 52%,rgba(0,0,0,0.4) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+  opacity: 1;
+}
+
+.card-media-object-tag {
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 2px 7px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.card-media-object-social-list {
+  bottom: 4px;
+  left: 10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  z-index: 20;
+}
+
+.card-media-object-social-list li {
+  border-radius: 50%;
+  display: inline-block;
+  height: 30px;
+  margin-right: 6px;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(5px);
+  transition: all 300ms ease-out;
+  width: 30px;
+}
+
+.card-media:hover .card-media-object-social-list li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-object-social-list li:nth-child(1) {
+  transition-delay: 0;
+}
+.card-media-object-social-list li:nth-child(2) {
+  transition-delay: 75ms;
+}
+.card-media-object-social-list li:nth-child(3) {
+  transition-delay: 150ms;
+}
+
+.card-media-object-social-list-item-additional {
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 12px;
+  padding-top: 7px;
+  text-align: center;
+}
+
+.card-media-body {
+  background: url(https://www.xmple.com/wallpaper/red-gradient-yellow-linear-1920x1080-c2-e9967a-ffdab9-a-165-f-14.svg);
+  float: left;
+  height: 100%;
+  background-size: cover;
+  font-size:25px;
+  padding: 12px 15px;
+  position: relative;
+  width: 65%;
+}
+
+.card-media-body-top {
+  display: block;
+}
+
+.card-media-body-top-icons {
+  margin-top: -2px;
+  opacity: 0;
+  transition: all 300ms ease-out;
+  transform: translateY(-5px);
+}
+
+.card-media:hover .card-media-body-top-icons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-body-top-icons > svg {
+  cursor: pointer;
+  margin-left: 10px;
+  transition: all 300ms ease-out;
+}
+
+.card-media-body-top-icons > svg:hover {
+  fill: #444;
+}
+
+.card-media-body-heading {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-media-body-supporting-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  opacity: 1;
+  padding: 0 15px;
+  transition: all 300ms ease-out;
+  width: 100%;
+}
+
+.card-media:hover .card-media-body-supporting-bottom {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.card-media-body-supporting-bottom-text {
+  display: inline-block;
+}
+
+.card-media-body-supporting-bottom-reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 300ms ease-out;
+}
+
+.card-media:hover .card-media-body-supporting-bottom-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-media-link {
+  color: rgb(1, 12, 17);
+  text-decoration: none;
+}
+
+
+  </style>
+  <script>
+  function displayProfile(name){
+    axios.get('http://localhost:3020/profile')
+    .then(function (response) {
+      // handle success
+      clearData();
+      display(response,name);
+      // addProfiledata();
+      displayAudio(name)
+      displayVideo(name)
+      displayBio(name)
+
+      
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+    }
+    function displayAudio(name){
+      axios.get('http://localhost:3020/profile/audio')
+    .then(function (response) {
+      // handle success
+      displayWidget(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+    }
+    function displayWidget(response,name){
+      length=response.data.length;
+      console.log("length is"+length);
+
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("sound cloud links---"+response.data[i].userName)
+          url=response.data[i].audioLink;
+          axios.get('http://soundcloud.com/oembed?format=json&url='+url+'&iframe=true')
+    .then(function (response) {
+      // handle success
+    var widget=response.data.html
+    widget=widget.replace("width=\"100%\"","width=\"70%\"");
+    widget=widget.replace("height=\"400\"","height=\"70%\"");
+    document.getElementById('soundcloud').innerHTML+=widget
+     console.log(widget)
+     
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+
+
+  }}
+
+    }
+    function displayBio(name){
+      axios.get('http://localhost:3020/profile/bio')
+    .then(function (response) {
+      // handle success
+      displayUserbio(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+}
+function displayUserbio(response,name){
+  length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("this is userbio"+response.data[i].bio)
+
+document.getElementById('userbio').innerHTML+=`<p style="font-weight:bolder;margin-left:40px">${response.data[i].bio.toUpperCase()}</p>`
+
+
+}}}
+    function displayVideo(name){
+      axios.get('http://localhost:3020/profile/video')
+    .then(function (response) {
+      // handle success
+      displayYoutube(response,name);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+    }
+
+    function displayYoutube(response,name){
+      length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+         console.log("inside display YT"+input_string)
+            var input_string = response.data[i].videoLink;
+            console.log(input_string)
+            var right_text = input_string.substring(input_string.indexOf("=")+1);
+            console.log("YT ID"+right_text)
+            document.getElementById('frame').innerHTML+=` <iframe width="560" height="315" src="https://www.youtube.com/embed/${right_text}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+`}}}
+
+
+
+
+
+  function display(response,name){
+     length=response.data.length;
+      for(var i=0;i<length;i++){
+        if(response.data[i].userName===name){
+          console.log("this is user"+response.data[i].userName)
+          document.getElementById("data").innerHTML+=
+       
+       `
+       <div id="jumbotron1"class=jumbotron jumbotron-fluid>
+       <div class="containerjumbo">
+  <h1 class="display-3">HELLO, ${response.data[i].userName.toUpperCase()}!</h1>
+  <p style="margin-bottom:20px;"><strong>INSTRUMENT</strong> - ${response.data[i].instrument.toUpperCase()}</p>
+  <p style="margin-bottom:20px;"><strong>GENRE</strong> - ${response.data[i].genre.toUpperCase()}</p>
+  <p style="margin-bottom:20px;"><strong>EMAIL</strong> - ${response.data[i].email.toUpperCase()}.</p>
+  <p style="margin-bottom:20px;"><strong>MOBILE NO</strong> - ${response.data[i].phoneNumber}
+  <p style="margin-bottom:20px;"><strong>CITY</strong> - ${response.data[i].city.toUpperCase()}</p>
+  <p>
+ 
+
+</div>
+</div>
+<div class="page-scroll">
+`
+        }
+      }
+
+    }
+
+    function clearData(){
+     //document.getElementById('userlinks').innerHTML=""
+      document.getElementById("data").innerHTML=""
+    }
+    function clearProfiledata(){
+      document.getElementById('userlinks').innerHTML=""
+    }
+//     function addProfiledata(){
+//       document.getElementById('userlinks').innerHTML=`
+//       <div id='userbio' class="shadow-lg p-3 mb-5 bg-white rounded">
+//   <h2 style="margin-bottom: 5px">DESCRIPTION</h2>
+//   <br>
+// </div>
+// // <input id="bio" type="text"></input><button onclick=${addEventListener("click",function(){addbio()})}>ADD to BIO</button>
+
+
+// // <input id="audio" type="text"></input><button onclick=${addEventListener("click",function(){sendAudio()})}>send audio</button>
+// <p id='soundcloud'></p>
+
+
+// <div>Enter a YouTube URL:
+//   <input id="video" type="text"  />
+// </div>
+// <div>
+//   // <button id="myBtn" onclick=${addEventListener("click",function(){sendVideo()})}>Go</button>
+// </div>
+// <p id="frame"></p>`
+//     }
+    function displayData(response,ins)
+    {   length=response.data.length;
+        if(ins==='guitar')
+        {link='https://cdn.shopify.com/s/files/1/1010/2722/products/andrew_healey_2.jpg?v=1455751289'}
+        if(ins==='drums')
+        {link='https://cdn.shopify.com/s/files/1/1179/7372/files/Thomo.jpg?v=1511848381'}
+        if(ins==='bass')
+        {link='https://mitchellguitars.com/wp-content/uploads/2018/11/Mitchell-FB-Series-Bass-Main-Mobile.jpg'}
+        if(ins==='vocals')
+        {link='https://i.udemycdn.com/course/750x422/113564_a628_8.jpg'}
+        if(ins==='keyboard')
+        {link='https://digitalpianojudge.com/wp-content/uploads/2019/02/cheap-keyboard-piano.jpg'}
+      for(var i=0;i<length;i++){
+     
+     
+  document.getElementById("data").innerHTML+=
+       
+       `
+       <div class="card-deck" style="width:25% ;float:left;margin-right:0px;margin-bottom:30px ">
+      <div class="card" >
+    <img class="card-img-top" src=${link}  style="width:100%">
+      <h4 class="card-title" style="font-size:37px">Name:${response.data[i].userName}</h4>
+      <p class="card-text" style="font-size:25px">Instrument:${response.data[i].instrument}</p>
+      <p class="card-text" style="font-size:25px">Genre:${response.data[i].genre}</p>
+      <p class="card-text" style="font-size:25px">Level:${response.data[i].level}</p>
+    
+      
+      
+      <a href='/others/${response.data[i].userName}' target="_blank" class="btn btn-primary stretched-link" id =${i} >See Profile</a>
+    </div>
+  </div>
+</div>
+</div>
+  
+      `
+      // let btn=document.getElementsByClassName('btn btn-primary stretched-link')[i];
+      //   btn.addEventListener('click',()=>{displayProfile(response.data[i].userName)})
+      // var data=document.createElement(a);
+      // node.appendChild(data);
+      // document.getElementById("data0").appendChild(node)
+     // console.log(userName);
+    
+    }}
+    function trial(name){
+      console.log(name)
+    }
+    function displayEventData(response)
+    {length=response.data.length;
+      for(var i=length-1;i>=0;i--){
+      
+      // document.getElementById("username").innerHTML = response.data[i].username;
+      // document.getElementById("instrument").innerHTML = response.data[i].instrument;
+      // document.getElementById("email").innerHTML = response.data[i].email;
+      // document.getElementById("city").innerHTML = response.data[i].city;
+      // document.getElementById("genre").innerHTML = response.data[i].genre;
+      // document.getElementById("level").innerHTML = response.data[i].level;
+     
+       document.getElementById("data").innerHTML+=`
+       <div class="container">
+  
+  <div class="card-media">
+    <!-- media container -->
+    <div class="card-media-object-container">
+      <div class="card-media-object" style="background-image: url(https://cdn.wallpapersafari.com/26/8/DgN89j.jpg);"></div>
+      <span class="card-media-object-tag subtle">${response.data[i].Status}</span>
+      <ul class="card-media-object-social-list">
+      </ul>
+    </div>
+    <!-- body container -->
+    <div class="card-media-body">
+      <div class="card-media-body-top">
+        <span class="subtle">Type:${response.data[i].eventType}</span>
+        <div class="card-media-body-top-icons u-float-right">
+          
+
+        </div>
+      </div>
+      <span class="card-media-body-heading">Event : ${response.data[i].eventName}</span>
+      <div class="card-media-body-supporting-bottom">
+        <span class="card-media-body-supporting-bottom-text subtle">Location : ${response.data[i].eventLocation}</span>
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right">Amount:${response.data[i].Salary}</span>
+      </div>
+      <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
+     
+        <a class="card-media-body-supporting-bottom-text card-media-link u-float-right">Contact:${response.data[i].Contact}</a>
+      </div>
+    </div>
+  </div>
+    
+       `
+      //  <div class="container-fluid" style="border:5px solid black ">
+      //  <div class="row">
+      //     <div class="col-sm-6" id="username"+ style="background-color:yellow;">${response.data[i].eventName}</div>
+      //     <div class="col-sm-6" id="instrument"style="background-color:orange;">Place:${response.data[i].eventPlace}</div>
+      //   </div>
+      //   <br>
+        
+      //   <div class="row">
+      //     <div class="col-sm" id="email" style="background-color:yellow;">Location:${response.data[i].eventLocation}</div>
+   
+      //     <div class="col-sm" id="email" style="background-color:yellow;">contact:${response.data[i].Contact}</div>
+   
+      //   </div>
+      //   <br>
+      //   <div class="row">
+      //     <div class="col-sm" id="city" style="background-color:yellow;">Type:${response.data[i].eventType}</div>
+      //     <div class="col-sm" id="genre" style="background-color:orange;">worth:${response.data[i].Salary}</div>
+      //     <div class="col-sm" id="level" style="background-color:orange;">Status:${response.data[i].Status}</div>
+         
+      //   </div>
+      //   <br>
+     
+      //   </div>
+      
+}}
+  
+    function getguitar()
+    {
+      var ins='guitar'
+      axios.get('http://localhost:3020/guitar')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+     //
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+  
+    
+    function getdrum()
+    {
+  axios.get('http://localhost:3020/drum')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='drums'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getbass()
+    {
+  axios.get('http://localhost:3020/bass')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='bass'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getvocals()
+    {
+  axios.get('http://localhost:3020/vocals')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='vocals'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    function getkeyboard()
+    {
+  axios.get('http://localhost:3020/keyboard')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      ins='keyboard'
+      displayData(response,ins);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  
+    }
+    
+
+
+
+    function getevent()
+    {
+      axios.get('http://localhost:3020/event')
+    .then(function (response) {
+      // handle success
+      clearData();
+      clearProfiledata()
+      displayEventData(response);
+      console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    });
+  }
+  function displayMain(loguser)
+  {
+    link='http://localhost:3020/main/'+loguser
+    console.log(link)
+    location.href=link
+    // axios.get('http://localhost:3020/main/'+loguser)
+    // .then(function (response) {
+    //   // handle success
+    //   //  clearData();
+    //   // clearProfiledata()
+    //   // displayEventData(response);
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   // handle error
+    //   console.log(error);
+    // })
+    // .finally(function () {
+    //   // always executed
+    // });
+
+
+
+
+  }
+  function getchat(loguser)
+  {
+    link='http://localhost:3020/chat/'+loguser
+    console.log(link)
+    window.open(link)
+    // location.href=link
+  }</script>
+</head>
+<body class="parallax">
+
+<nav class="navbar navbar-expand-sm bg-light navbar-light" id="mynavbar">
+  <!-- Brand -->
+  <!-- <script>main='http://localhost:3020/main/'+loguser</script> -->
+  <a class="navbar-brand" href="#" onclick=displayMain(loguser)><img src="/indika.jpeg" id="myimage">
+  </a>
+
+  <!-- Links -->
+  <ul class="navbar-nav" style="font-size:26px">
+    
+    </li>
+
+    <!-- Dropdown -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" style="color: black" data-toggle="dropdown">
+        INSTRUMENTS
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#" onclick=getguitar()>GUITARISTS</a>
+        <a class="dropdown-item" href="#" onclick=getdrum()>DRUMMER</a>
+        <a class="dropdown-item" href="#" onclick=getbass()>BASS</a>
+        <a class="dropdown-item" href="#" onclick=getvocals()>VOCALS</a>
+        <a class="dropdown-item" href="#" onclick=getkeyboard()>KEYBOARDS</a>
+      </div>
+    </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" href="#" onclick=getevent() style="color: black" >EVENTS</a>
+    
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" onclick="getchat(loguser)" href="#"  style="color: black">CHAT</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="http://localhost:3020/" style="color: black"><span style="margin-left: 974px ">LOGOUT</span></a>
+</li>
+</ul>
+</nav>
+<br>
+
+<h1 id="user" hidden><%=logusername%></h1>
+<div class="container-fluid" id="data">  
+  </div> 
+<div id='userlinks'>
+    <div  class="second" >
+    <!-- <div id='userbio' class="shadow-lg p-3 mb-5 bg-white rounded"> -->
+     <!-- <h2 style="margin-bottom: -17px;margin-left:11px;"><strong style="font-size: 3rem;
+      font-weight: 400;
+      line-height: 1.2;">
+      DESCRIPTION :
+    </strong></h2> -->
+    <div id ="jumbotron2"class="jumbotron jumbotron-fluid" style="padding-top:8px;margin-left:-15px">
+        <div class="containerjumbo" >
+            <h2 style="margin-bottom: -17px;margin-left:11px;" ><strong style="margin-left:27px;font-size: 3rem;
+              font-weight: 400;
+              line-height: 1.2;">
+              ABOUT ME:
+              
+            </strong></h2>
+            <br>
+            <p id="userbio"></p>
+
+          </div>
+          </div>
+
+    <br>
+    </div>
+    <h1 class="bioheader"style="color:white;text-align:center">TYPE IN THE AREA TO ADD BIO</h1>
+  <textarea style="background:transparent;color: white;margin-left: 38%;;border: 2px solid white;" id="bio" class="bio" type="text"></textarea>
+  <br>
+  <button style="margin-left: 53%;padding-right: 7px;margin-top: 2px;"class="btn"onclick=addbio()>CLICK TO ADD</button>
+  <br>
+  <br>
+  <h1 class="soundcloud"style="color:white;text-align:center">SOUND CLOUD UPLOADS</h1>
+  <input placeholder="URL OF THE SONG" style="background:transparent;color: white;margin-left: 38%;padding-top:3px;border: 2px solid white;width:23%"id="audio" type="text"></input>
+  <br>
+  <button style="margin-left: 53%;padding-right: 32px;margin-top: 2px;" class="btn"onclick=sendAudio()>UPLOAD SONG</button>
+  <br>
+  <br>
+  <p style="margin-right: -148px;margin-bottom:50px;margin-left: 18%" id='soundcloud'></p>
+  <h1 class="youcloud"style="color:white;text-align:center;margin-top:-44px">YouTUBE UPLOADS</h1>
+  <div>
+  <input placeholder="URL OF THE VIDEO" style="background:transparent;color: white;margin-left: 38%;padding-top:3px;border: 2px solid white;width:23%" id="video" type="text"  />
+</div>
+<div>
+  <button style="margin-left: 53%;padding-right: 32px;margin-top: 2px;" class="btn" id="myBtn" onclick=sendVideo()>UPLOAD VIDEO</button>
+</div>
+<p style="margin-left:18%"id="frame"></p>
+
+
+
+</div>
+</div>
+
+
+<script>
+var loguser=document.getElementById('user').innerText;
+window.onload=function(){
+displayProfile(loguser)
+// displayAudio(loguser)
+// displayVideo(loguser)
+// displayBio(loguser)
+}
+function sendAudio(){
+  audioLink=document.getElementById('audio').value;
+  console.log(audioLink);
+  console.log(loguser);
+  axios.post('/profile', {
+    userName: loguser,
+    audioLink: audioLink
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  location.reload(true);
+}
+function sendVideo(){
+  videoLink=document.getElementById('video').value;
+  console.log(videoLink);
+  console.log(loguser);
+  axios.post('/profile/video', {
+    userName: loguser,
+    videoLink: videoLink
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  location.reload(true);
+}
+function addbio(){
+  bio=document.getElementById('bio').value;
+  axios.post('/profile/bio', {
+    userName: loguser,
+    bio: bio
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  location.reload(true);
+}
+
+   </script>
+
+</body>
+</html>
